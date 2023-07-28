@@ -25,3 +25,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/index', [App\Http\Controllers\ProductController::class, 'index'])->name('index');
 Route::get('/create', [App\Http\Controllers\ProductController::class, 'showCreate'])->name('showCreate');
 Route::post('/create', [App\Http\Controllers\ProductController::class, 'exeCreate'])->name('exeCreate');
+Route::get('/show/{id}', [App\Http\Controllers\ProductController::class, 'show'])->name('show');
+Route::get('/edit/{id}', [App\Http\Controllers\ProductController::class, 'edit'])->name('edit');
+Route::post('/update', [App\Http\Controllers\ProductController::class, 'update'])->name('update');

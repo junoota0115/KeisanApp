@@ -39,5 +39,14 @@ public function exeCreate(Request $request){
         return redirect('index');
 }
 
+public function show($id){
+    $product = Product::find($id);
+    return view("show",compact("product"));
+}
+
+public function edit($id){
+    $product = Product::find($id);
+    return view("edit",compact("product"));
+}
 
 }
