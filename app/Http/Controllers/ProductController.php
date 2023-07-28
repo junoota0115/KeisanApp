@@ -12,7 +12,10 @@ class ProductController extends Controller
 {
     //
     public function index(){
-return view("index");
+        $query = Product::select('products.*')->where('user_id','=',\Auth::id());
+        $products = $query->get();
+        
+        return view("index",compact("products"));
     }
 
 public function showCreate(){
