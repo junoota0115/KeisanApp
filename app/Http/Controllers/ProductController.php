@@ -49,4 +49,22 @@ public function edit($id){
     return view("edit",compact("product"));
 }
 
+public function update(Request $request){
+    $inputs = $request->all();
+    // dd($products);
+    $products = Product::find($inputs['id']);
+    DB::transaction(function() use($products,$inputs){
+        $products->fill([
+            'product_name' => $inputs['product_name'],
+            'stock'=>$inputs['stock'],
+            'price'=>$inputs['price'],
+            'company_id'=>$inputs['company_id'],
+            'user_id'=>\Auth::id()
+        ]);
+        $products->save();
+        DB::commit();
+    });
+    return redirect('index');
+
+}
 }
