@@ -13,11 +13,15 @@
             <th>在庫</th>
         </tr>
         @foreach ($products as $product)
+            <form action="{{ route('destroy', ['id' => $product->id]) }}" method="POST">
+            @csrf
         <tr>
             <td>{{$product->product_name}}</td>
             <td>{{$product->price}}</td>
             <td>{{$product->stock}}</td>
             <td><a href="{{ url('/show', $product->id) }}">詳細ページ</a></td>
+            <td><button type="submit" class="btn btn-danger">削除</td>
+                </form>
         </tr>
         @endforeach
     </table>
