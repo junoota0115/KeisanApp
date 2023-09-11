@@ -11,11 +11,13 @@
             <th>名前</th>
             <th>値段</th>
             <th>在庫</th>
+            <th>会社</th>
         </tr>
         <tr>
             <td>{{$product->product_name}}</td>
             <td>{{$product->price}}</td>
             <td>{{$product->stock}}</td>
+            <td>{{$company->company_name}}</td>
             <td><a href="{{ url('/edit', $product->id) }}">編集ページ</a></td>
         </tr>
     </table>

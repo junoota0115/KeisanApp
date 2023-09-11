@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use DB;
@@ -19,7 +20,8 @@ class ProductController extends Controller
     }
 
 public function showCreate(){
-    return view("create");
+    $companies = Company::get();
+    return view("create",compact('companies'));
 }
 
 public function exeCreate(Request $request){
@@ -41,7 +43,9 @@ public function exeCreate(Request $request){
 
 public function show($id){
     $product = Product::find($id);
-    return view("show",compact("product"));
+    $company = Company::where('id','=',$product['company_id'])
+    ->first();
+    return view("show",compact("product","company"));
 }
 
 public function edit($id){
@@ -67,4 +71,11 @@ public function update(Request $request){
     return redirect('index');
 
 }
+
+public function destroy($id){
+    $product = Product::find($id);
+    $product->delete();
+    return redirect('index');
+}
+
 }

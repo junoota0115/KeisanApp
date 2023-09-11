@@ -28,3 +28,4 @@ Route::post('/create', [App\Http\Controllers\ProductController::class, 'exeCreat
 Route::get('/show/{id}', [App\Http\Controllers\ProductController::class, 'show'])->name('show');
 Route::get('/edit/{id}', [App\Http\Controllers\ProductController::class, 'edit'])->name('edit');
 Route::post('/update', [App\Http\Controllers\ProductController::class, 'update'])->name('update');
+Route::post('/destroy/{id}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('destroy');

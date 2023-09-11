@@ -20,7 +20,10 @@
     </div>
     <div class="form-group">
         <label for="company_id">会社名</label>
-        <input type="integer" name="company_id" id="company_id" > 
+        @foreach ($companies as $company)
+        <input type="radio" name="company_id" id="{{$company['company_name']}}" value="{{$company['id']}}" > 
+        <label class="form-check-label" for="{{$company['company_name']}}">{{$company['company_name']}}</label>
+        @endforeach
     </div>
 
     <button type="submit" class="btn btn-primary">送信</button>
